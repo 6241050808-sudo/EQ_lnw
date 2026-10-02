@@ -23,6 +23,9 @@ jobs:
         with:
           gradle-version: '9.3.1'
 
+      - name: Create Env Files
+        run: touch .env.example .env
+
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
