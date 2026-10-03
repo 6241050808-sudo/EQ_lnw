@@ -26,6 +26,10 @@ jobs:
       - name: Create Env Files
         run: touch .env.example .env
 
+      - name: Generate Debug Keystore
+        run: |
+          keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US" || true
+
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
